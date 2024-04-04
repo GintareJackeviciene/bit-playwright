@@ -4,6 +4,13 @@ import { USER } from '../test.data';
 
 
 test.describe('Login tests', () => {
+
+  test.beforeEach(async ({ page })=>{
+    await page.goto('/register');
+    await expect(page).toHaveTitle(/Log in to WebIssues | WebIssues/);
+ 
+   });
+
 test('should be able to login', async ({ page }) => {
   await page.goto('/register');
 
