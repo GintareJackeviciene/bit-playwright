@@ -7,7 +7,7 @@
     "extends": [
       "eslint:recommended",
       "plugin:@typescript-eslint/recommended",
-      //"plugin:prettier/recommended",
+      "plugin:prettier/recommended",
       "plugin:playwright/playwright-test"
     ],
     "parserOptions": {
