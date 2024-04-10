@@ -1,18 +1,34 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('bug test', () => {
-    test('bugBook testing', async ({ page }) => {
-        await page.goto('https://testingmarathon.com/testing/bugbook/');
-        await expect(page.locator('//h1')).toContainText('BugBook');
+test.describe('slot machine game spec', () => {
+    test('should be able to win', async ({ page }) => {
+        await page.goto('https://testingmarathon.com/testing/slot_machine_game/');
 
-        page.on('dialog', async (dialog) => {
-            const message = dialog.message();
-            console.log('message ===', message);
-            expect(message).toContain("You've already liked this post!");
-            await dialog.accept();
-        });
+        await expect
+            .poll(
+                async () => {
+                    await page.click('#spinButton');
+                    return await page.textContent('#result');
+                },
+                {
+                    timeout: 15_000
+                }
+            )
+            .toEqual('You win!');
+    });
+    test('should be able to loose', async ({ page }) => {
+        await page.goto('https://testingmarathon.com/testing/slot_machine_game/');
 
-        await page.click('#demo1');
-        await page.click('#demo1');
+        await expect
+            .poll(
+                async () => {
+                    await page.click('#spinButton');
+                    return await page.textContent('#result');
+                },
+                {
+                    timeout: 15_000
+                }
+            )
+            .toEqual('Try again!');
     });
 });
