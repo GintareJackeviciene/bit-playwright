@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import * as dotenv from 'dotenv';
-import { API_KEY } from './test.data';
+import { API_KEY, COOKIE } from './test.data';
 
 dotenv.config({ path: `ENV/${process.env.DOT_ENV || 'test'}.env` });
 
@@ -36,7 +36,8 @@ export default defineConfig({
         trace: 'on-first-retry',
 
         extraHTTPHeaders: {
-            'X-API-KEY': API_KEY
+            'X-API-KEY': API_KEY,
+            cookie: `session.omnisend=${COOKIE}`
         }
     },
 
@@ -66,7 +67,7 @@ export default defineConfig({
         //   name: 'Google Chrome',
         //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
         // },
-    ],
+    ]
 
     /* Run your local dev server before starting the tests */
     // webServer: {
@@ -74,5 +75,5 @@ export default defineConfig({
     //   url: 'http://127.0.0.1:3000',
     //   reuseExistingServer: !process.env.CI,
     // },
-    timeout: 5 * 60 * 1000
+    //timeout: 5 * 60 * 1000
 });

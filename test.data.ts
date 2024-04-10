@@ -22,6 +22,10 @@ export const API_URL: string | undefined = process.env.API_URL;
 
 export const API_KEY: string | undefined = process.env.API_KEY;
 
+export const APP_URL: string | undefined = process.env.APP_URL;
+
+export const COOKIE: string | undefined = process.env.COOKIE;
+
 export function getRandomString(length: number, characters: string) {
     let result = '';
     const charactersLength = characters.length;
@@ -31,4 +35,8 @@ export function getRandomString(length: number, characters: string) {
         counter += 1;
     }
     return result;
+}
+
+export function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
 }

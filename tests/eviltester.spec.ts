@@ -15,7 +15,7 @@ test.describe('click display:none button', () => {
         await page.fill('#w2lw5', 'u');
         await page.fill('#w2lw6', 'd');
         await page.fill('#w2lw7', 'e');
-        //await page.click('//button[text()="Header"]', { force: true });
+
         await page.locator('//button[text()="Header"]').dispatchEvent('click');
         await expect(page.locator('#result')).toContainText('I t.e.s.t with a.t.t.i.t.u.d.e');
         await page.locator('//button[text()="Render"]').dispatchEvent('click');
