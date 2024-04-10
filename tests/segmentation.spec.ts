@@ -68,27 +68,27 @@ test.describe('Segment APP spec', () => {
             await Segments.tryToDeleteSegment(segmentID);
         }
         if (contactID !== undefined) {
-            await ContactsDelete.createBatchDelete(contactID);
+            await ContactsDelete.createBatchDelete([contactID]);
         }
     });
+});
 
-    test('should be able to segment by contact id', async ({}) => {
-        const contact = await Contact.createContactByEmail(email);
-        contactID = (await contact.json()).contactID;
+test('should be able to segment by contact id', async ({}) => {
+    const contact = await Contact.createContactByEmail(email);
+    contactID = (await contact.json()).contactID;
 
-        const segmentResponse = await Segments.create(segment);
-        segmentID = (await segmentResponse.json()).data.segmentID;
+    const segmentResponse = await Segments.create(segment);
+    segmentID = (await segmentResponse.json()).data.segmentID;
 
-        await expect
-            .poll(
-                async () => {
-                    const response = await Contacts.get(segmentID, email);
-                    return JSON.stringify(await response.json());
-                },
-                {
-                    timeout: 25000
-                }
-            )
-            .toContain(email);
-    });
+    await expect
+        .poll(
+            async () => {
+                const response = await Contacts.get(segmentID, email);
+                return JSON.stringify(await response.json());
+            },
+            {
+                timeout: 25000
+            }
+        )
+        .toContain(email);
 });
