@@ -7,7 +7,6 @@ test.describe('Double click on like', () => {
 
         page.on('dialog', async (dialog) => {
             const message = dialog.message();
-            console.log('message ===', message);
             expect(message).toContain("You've already liked this post!");
             await dialog.accept();
         });
