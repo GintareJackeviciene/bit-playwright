@@ -9,8 +9,8 @@ test.describe('skelbimu test', () => {
     });
     test('alio.lt', async ({ page }) => {
         await page.goto('https://www.alio.lt/paieska/apple/?top_search=1');
-        await expect(page.locator('body')).toContainText('MacBook Pro 13 (2017) 128 GB i5 8gb');
-        await page.click('//*[@id="listviewphotoover_66429213"]');
-        await expect(page.locator('//h1')).toContainText('MacBook Pro 13 (2017) 128 GB i5 8gb, Vilnius');
+        await expect(page.locator('body')).toContainText('Apple Apple 12 128gb');
+        await page.click('//*[@id="listviewphotoover_66451239"]');
+        await expect(page.locator('//h1')).toContainText('Apple Apple 12 128gb, Vilnius');
     });
 });
