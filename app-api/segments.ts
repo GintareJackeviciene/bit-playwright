@@ -7,6 +7,7 @@ export class Segments {
 
         return await context.post(`${APP_URL}/REST/segments/v2/segments`, {
             data: segment,
+
             failOnStatusCode: failOnStatusCode
         });
     }
