@@ -81,6 +81,7 @@ test.describe('Segment APP spec', () => {
         await context.addCookies([{ name: 'session.omnisend', value: COOKIE, url: APP_URL }]);
         await page.goto(`${APP_URL}/audience/imports/wizard/contact`);
         await page.fill('//input[@placeholder="Enter email"]', email);
+        console.log(email);
         await page.click('//*[contains(text(), "This person gave permission to be added to the list.")]');
         await page.click('//*[contains(text(), "Add subscriber")]');
         await expect(page.locator('//tbody')).toContainText(email);
