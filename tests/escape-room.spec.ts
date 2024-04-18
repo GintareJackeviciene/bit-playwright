@@ -5,11 +5,11 @@ test.describe('Code Escape Room', () => {
     //     await page.goto('https://testingmarathon.com/testing/EscapeRoom/');
 
     const parameter = [
-        ['1', "var greeting = 'Hello, world!';"],
+        ['1', `var greeting = 'Hello, world!';`],
         ['2', 'function isEven(num) { return num % 2 == 0; }'],
         ['3', 'string'],
         ['4', '200'],
-        ['5', "expect(contact.firstName).toEqual('Jonas');"],
+        ['5', `expect(contact.firstName).toEqual('Jonas');`],
         ['6', 'const contact = new Contacts();'],
         ['7', 'httpOnly: true'],
         ['8', 'secure: true'],
