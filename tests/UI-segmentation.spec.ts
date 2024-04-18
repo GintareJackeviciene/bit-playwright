@@ -9,8 +9,8 @@ test.describe('Segment APP spec', () => {
         //istrina kontakta
         await page.goto(`${APP_URL}/audience/segments/contact-list`);
         await page.click('//*[@placeholder="Search contacts by email or phone number"]');
-        await page.keyboard.type(email, { delay: 100 }); //similiuoja letesni suvedima
-        //await page.keyboard.type('  ', { delay: 500 });
+        await page.keyboard.type(email, { delay: 1 }); //similiuoja letesni suvedima
+        await page.keyboard.type('  ', { delay: 500 });
 
         // await expect(page.locator('//*[@data-tid="skeleton-loading-indicator"]')).toBeVisible();
         // await expect(page.locator('//*[@data-tid="skeleton-loading-indicator"]')).not.toBeVisible();
@@ -28,7 +28,7 @@ test.describe('Segment APP spec', () => {
         await page.fill('//*[@data-tid="segments-list-page-search"]', email);
         await page.click('//*[@data-tid="more-actions"]');
         await page.click('//*[@data-tid="delete-all"]');
-        await page.click('//*[@data-tid="delete-confimr"]');
+        await page.click('//*[@data-tid="delete-confirm"]');
     });
 
     test('should be able to segment by contact id', async ({ page }) => {
