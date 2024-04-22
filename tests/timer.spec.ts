@@ -5,6 +5,8 @@ test.describe('Timer spec', () => {
         await page.goto(`/testing/Timer/`);
         await page.click('#start');
         await page.click('#stop');
+
+        // susplitinam i array
         const time = await page.locator('#display').textContent();
         const seconds = time.split(':');
 
@@ -15,19 +17,12 @@ test.describe('Timer spec', () => {
     test(`should be able to stop and resume many times`, async ({ page }) => {
         await page.goto(`/testing/Timer/`);
         await page.click('#start');
+        await page.click('#stop');
 
-        await page.click('#stop');
-        await page.click('#resume');
-        await page.click('#stop');
-        await page.click('#resume');
-        await page.click('#stop');
-        await page.click('#resume');
-        await page.click('#stop');
-        await page.click('#resume');
-        //await page.click('#stop');
-        //await page.click('#resume');
-
-        const time = await page.locator('#display').textContent();
-        expect(time).not.toEqual('00:00:00.00');
+        for (let i = 0; i < 4; i++) {
+            await page.click('#resume');
+            await page.click('#stop');
+        }
+        await expect(page.locator('#display')).toContainText('00:00:00.00');
     });
 });
