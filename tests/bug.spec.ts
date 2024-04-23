@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Double click on like', () => {
     test('should be able to like 2 times', async ({ page }) => {
-        await page.goto('https://testingmarathon.com/testing/bugbook/');
+        await page.goto('/testing/bugbook/');
         await expect(page.locator('//h1')).toContainText('BugBook');
 
         page.on('dialog', async (dialog) => {
