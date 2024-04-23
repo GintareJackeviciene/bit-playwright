@@ -6,7 +6,7 @@ test.describe('Timer spec', () => {
         await page.click('#start');
         await page.click('#stop');
 
-        // susplitinam i array
+        // susplitinam(panaikina :) i array
         const time = await page.locator('#display').textContent();
         const seconds = time.split(':');
 
