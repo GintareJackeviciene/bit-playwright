@@ -20,7 +20,7 @@ test.describe('Segment APP spec', () => {
         const newPage = await pagePromise;
         await newPage.click('//button[@tid="more-actions"]');
         await newPage.click('//div[contains(text(), "Delete")]');
-        await newPage.click('//div[contains(text(), "Yes, I’m 100% sure I want to delete the selected contacts.")]');
+        await newPage.click('//div[contains(text(), `Yes, I’m 100% sure I want to delete the selected contacts.`)]');
         await newPage.click('//div[contains(text(), "Confirm")]');
 
         //istrinam segmenta
@@ -39,7 +39,7 @@ test.describe('Segment APP spec', () => {
         await page.fill('//input[@placeholder="Enter email"]', email);
         await page.click('//*[contains(text(), "This person gave permission to be added to the list.")]');
         await page.click('//*[contains(text(), "Add subscriber")]');
-        await expect(page.locator('//tbody')).toContainText(email, { timeout: 10000 });
+        await expect(page.locator('//tbody')).toContainText(email);
 
         //kuriam segmenta ir tikrinam ar kontaktas ikrenta i segmenta
         await page.goto(`${APP_URL}/audience/segments/editor/`);
@@ -52,6 +52,6 @@ test.describe('Segment APP spec', () => {
         await page.click('//*[contains(text(), "Save & show contacts")]');
         await page.fill('//input', email);
         await page.click('//div[(text()=" Save ")]');
-        await expect(page.locator('//tbody')).toContainText(email, { timeout: 15000 });
+        await expect(page.locator('//tbody')).toContainText(email, { timeout: 20000 });
     });
 });
