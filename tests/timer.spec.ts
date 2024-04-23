@@ -11,7 +11,7 @@ test.describe('Timer spec', () => {
         const seconds = time.split(':');
 
         console.log(parseFloat(seconds[2]));
-        expect(time).not.toEqual('00:00:00.00');
+        await expect(page.locator('#display')).not.toHaveText('00:00:00.00');
         expect(parseFloat(seconds[2])).toBeGreaterThan(0);
     });
     test(`should be able to stop and resume many times`, async ({ page }) => {
