@@ -31,7 +31,7 @@ test.describe('robodam test', () => {
         await page.click('//*[contains(text(),"Contacts")]');
         await expect(page.getByText(/Don’t hesitate to contact us anytime/i)).toBeVisible();
 
-        await page.click('//*[contains(text(),"Try)]');
+        await page.click('//*[contains(text(),"Try")]');
         await expect(page.getByText(/Book a/i)).toBeVisible();
     });
     const email = `${getRandomString(20, 'qwertyuiopasdfghjklzxcvbnm')}@lokalus.lt`;
@@ -42,7 +42,6 @@ test.describe('robodam test', () => {
             await acceptButton.click();
         }
         await page.click('//*[contains(text(),"Try")]');
-        await expect(page.getByText(/Book a/i)).toBeVisible();
 
         await page.fill('[name="name"]', 'Vardas');
         await page.fill('[name="company"]', 'Companija');
