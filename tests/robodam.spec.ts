@@ -8,7 +8,7 @@ test.describe('robodam test', () => {
         if (await acceptButton.isVisible()) {
             await acceptButton.click();
         }
-        await expect(page.locator('//h1')).toContainText('Automate in days');
+        await expect(page.locator('//h1')).toContainText('New level of productivity');
 
         await page.click('//*[contains(text(),"About")]');
         await expect(page.getByText(/Meet the team/i)).toBeVisible();
@@ -18,14 +18,15 @@ test.describe('robodam test', () => {
         await expect(demo).toHaveText(/Demo call/);
 
         await page.click('//*[contains(text(),"Library")]');
-        const linda = page.locator('//p[contains(text(),"Linda")]');
-        await expect(linda).toHaveText(/Linda/);
+        await expect(page.locator('//h1')).toContainText(
+            "Dive into our collection of eRobots, showcasing the range of solutions we've already crafted for clients. Discover the possibilities we can bring to you"
+        );
 
         await page.click('//*[contains(text(),"News")]');
-        await expect(page.getByText(/Stay tuned with our latest news/i)).toBeVisible();
+        await expect(page.getByText(/Stay updated with our latest insights/i)).toBeVisible();
 
         await page.click('//*[contains(text(),"Career")]');
-        await expect(page.getByText(/Be part of our journey towards digital transformation/i)).toBeVisible();
+        await expect(page.getByText(/Join us on our digital transformation journey/i)).toBeVisible();
 
         await page.click('//*[contains(text(),"Contacts")]');
         await expect(page.getByText(/Don’t hesitate to contact us anytime/i)).toBeVisible();
